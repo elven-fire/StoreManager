@@ -50,7 +50,14 @@ class AttributeCriterion (_Criterion):
     """Items which contain an AttributeAbility of the specified type."""
 
     def __init__(self, attr, minsize=None, maxsize=None):
-        """Define attribute [and size] to search for ('ST', 'DX', etc)."""
+        """Define attribute [and size] to search for ('ST', 'DX', etc).
+
+        Arguments:
+          attr -- a valid attribute name (ST, DX, IQ, MA, Dam, or Hit)
+          minsize -- the minimum valid attribute size
+          maxsize -- the maximum valid attribute size
+
+        """
         self.attr = attr
         self.minsize = minsize
         self.maxsize = maxsize
@@ -84,18 +91,19 @@ class AttributeCriterion (_Criterion):
         return False
 
     def __str__(self):
+        """Return string output e.g. "ST + 3-5"."""
         if self.attr is None:
             val = 'Any Attribute +'
         else:
             val = '%s +' % self.attr
         if self.minsize is not None and self.minsize == self.maxsize:
-            return '%s+%s' % (self.attr, self.minsize)
+            val += ' %s' % self.minsize
         elif self.minsize is not None and self.maxsize is not None:
             val += ' %s-%s' % (self.minsize, self.maxsize)
         elif self.minsize is not None:
-            val += ' %s' % self.minsize
+            val += ' %s or more' % self.minsize
         elif self.maxsize is not None:
-            val += ' %s' % self.maxsize
+            val += ' %s or less' % self.maxsize
         return val
 
 
