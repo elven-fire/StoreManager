@@ -173,6 +173,21 @@ class PhysicalWeaponStore (_Store):
         """Return a random physical weapon."""
         return WeaponStockItem()
 
+class SpecificWeaponStore (PhysicalWeaponStore):
+
+    """Contains physical weapons of a specific style only (e.g. Ax/Mace/Hammer).
+
+    weapon_style -- valid style for a MundaneWeapon
+
+    """
+
+    def __init__(self, name, size, weapon_style, desc=None):
+        self.weapon_style = weapon_style
+        PhysicalWeaponStore.__init__(self, name, size, desc)
+
+    def randomitem(self):
+        """Return a random physical weapon of the correct style."""
+        return WeaponStockItem(style=self.weapon_style)
 
 class WeaponStore (_Store):
 
