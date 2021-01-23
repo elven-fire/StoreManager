@@ -229,6 +229,7 @@ class StoreTree (QtGui.QTreeWidgetItem):
                   store.BookStore : 'book.png',
                   store.PotionStore : 'potion.png',
                   store.PhysicalWeaponStore : 'weapon.png',
+                  store.SpecificWeaponStore : 'weapon.png',
                   store.WeaponStore : 'rod.png',
                   store.ArmorStore : 'armorstore.png',
                   store.MagicStore : 'magic.png',
