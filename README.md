@@ -20,7 +20,7 @@ ln -s ../elvenfire/elvenfire/ elvenfire
 
 ## Command Line Interface
 
-ELF Store Manager can be used from the command line without the need to install PyQt. Locations will be stored in the current working directory in custom formats (`.town`, `.store`, `.uni`) as well as human-readable versions automatically maintained in the same directory (`.txt`).
+ELF Store Manager can be used from the command line without the need to install PyQt. Locations will be stored in the current working directory in a custom format (`.town`, `.store`, `.uni`) as well as human-readable versions automatically maintained in the same directory (`.txt`).
 
 ## Creating locations
 
@@ -31,7 +31,7 @@ elfsm --create --store "Lonely Roadpost" --size 3
 elfsm --create --university "Traveling Mentors" --size 1
 ```
 
-More commonly, a town can be generated with an appropriate selection of stores and/or universities according to the size selected (1-5, where 3 is a standard large town). A full town will be stored in a `.town` file in the current directory.
+More commonly, a town can be generated with an appropriate selection of stores and/or universities created according to the size selected (1-5, where 3 is a standard large town). A full town will be stored in a `.town` file in the current directory.
 
 ```bash
 elfsm --create --town "Guilderland" --size 5
@@ -44,8 +44,8 @@ Once created, these location files are self-contained and can be transferred fro
 Purchase an item directly:
 
 ```bash
-elfsm --town Guilderland --purchase "Rod of Fireball 3 - 8 charges"
-elfsm --town Guilderland --purchase 'Healing Potion' --quantity 3
+elfsm --town Guilderland --purchase --item "Rod of Fireball 3 - 8 charges"
+elfsm --town Guilderland --purchase --item 'Healing Potion' --quantity 3
 ```
 
 You will be asked to confirm the item and price, and then the appropriate `.town` and `.txt` files will be updated with these items removed.
