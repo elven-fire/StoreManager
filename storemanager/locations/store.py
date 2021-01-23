@@ -1,5 +1,7 @@
 import random
 
+from elvenfire.mundane.weapons import MundaneWeapon
+
 from storemanager.locations import StoreError, _Store
 from storemanager.stockitems.special import *
 from storemanager.stockitems.combat import *
@@ -173,7 +175,7 @@ class PhysicalWeaponStore (_Store):
         """Return a random physical weapon."""
         return WeaponStockItem()
 
-class SpecificWeaponStore (PhysicalWeaponStore):
+class SpecificWeaponStore (_Store):
 
     """Contains physical weapons of a specific style only (e.g. Ax/Mace/Hammer).
 
@@ -181,9 +183,30 @@ class SpecificWeaponStore (PhysicalWeaponStore):
 
     """
 
-    def __init__(self, name, size, weapon_style, desc=None):
+    def __init__(self, name, size, weapon_style=None, desc=None):
         self.weapon_style = weapon_style
-        PhysicalWeaponStore.__init__(self, name, size, desc)
+        if (weapon_style is None):
+            self.weapon_style = random.choice(MundaneWeapon.stylelist)
+        _Store.__init__(self, name, size, desc)
+
+    def randomname(self):
+        """Return a random name."""
+        return random.choice(('Specialty Kill Aids', 'Limited Selection',
+                              'One Per Customer', "Warrior's Specialty", 
+                              'Fight Like You Mean It', "Annie's All-Alikes",
+                              'The One-Type Fighter', 'Simple Selection',
+                              'One Choice, One Hit', "The Specializer",
+                              "Oggie's Onlies", 'One-Power Store'))
+
+    def defaultdesc(self):
+        """Return the default description."""
+        return random.choice((
+              "Enhanced weapons, one style fits all!",
+              "Don't waste time choosing, just hit things!",
+              "Specialty shop for specialty heroes",
+              "Dual Wielders, select with both hands.",
+              "Matching weapons make it easy to prepare for battle.",
+                             ))
 
     def randomitem(self):
         """Return a random physical weapon of the correct style."""
