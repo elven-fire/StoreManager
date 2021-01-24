@@ -187,6 +187,8 @@ class SpecificWeaponStore (_Store):
         self.weapon_style = weapon_style
         if (weapon_style is None):
             self.weapon_style = random.choice(MundaneWeapon.stylelist)
+        elif (weapon_style not in MundaneWeapon.stylelist):
+            raise StoreError("Unknown style of mundane weapon: %s", weapon_style)
         _Store.__init__(self, name, size, desc)
 
     def randomname(self):
