@@ -205,8 +205,7 @@ class SpecificWeaponStore (_Store):
               "Don't waste time choosing, just hit things!",
               "Specialty shop for specialty heroes",
               "Dual Wielders, select with both hands.",
-              "Matching weapons make it easy to prepare for battle.",
-                             ))
+              "Matching weapons make it easy to prepare for battle."))
 
     def randomitem(self):
         """Return a random physical weapon of the correct style."""
